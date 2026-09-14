@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Usimamizi wa Biashara</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f9; color: #333; padding: 20px; }
+        
+        .header { display: flex; justify-content: space-between; align-items: center; background: #1e293b; color: white; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; }
+        .header h2 { font-size: 1.2rem; }
+        .user-info { font-size: 0.9rem; color: #cbd5e1; }
+
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        
+        .card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 5px solid #2563eb; }
+        .card.mpesa { border-color: #16a34a; }
+        .card.salon { border-color: #d97706; }
+        .card.hotspot { border-color: #2563eb; }
+
+        .card h3 { font-size: 1.1rem; color: #475569; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+        
+        .stat-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem; }
+        .stat-label { color: #64748b; }
+        .stat-value { font-weight: bold; color: #0f172a; }
+        .profit { color: #16a34a; font-size: 1.1rem; font-weight: bold; }
+        .shortage { color: #dc2626; }
+
+        .btn-action { display: inline-block; width: 100%; text-align: center; background: #0f172a; color: white; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 15px; }
+        .btn-action:hover { background: #334155; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>DASHBOARD YA UDHIBITI</h2>
+        <div class="user-info">Akaunti: <strong>Admin</strong></div>
+    </div>
+
+    <div class="cards-grid">
+        
+        <!-- CARD 1: M-PESA -->
+        <div class="card mpesa">
+            <h3> M-Pesa & Financial Services</h3>
+            <div class="stat-row">
+                <span class="stat-label">Kamisheni ya Leo:</span>
+                <span class="stat-value">TZS {{ total_mpesa_commission }}</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Ziada / Uhaba:</span>
+                <span class="stat-value shortage">TZS {{ total_mpesa_shortage }}</span>
+            </div>
+            <a href="#" class="btn-action">Angalia Ripoti ya M-Pesa</a>
+        </div>
+
+        <!-- CARD 2: SALUNI -->
+        <div class="card salon">
+            <h3> Saluni Services</h3>
+            <div class="stat-row">
+                <span class="stat-label">Mapato ya Leo:</span>
+                <span class="stat-value">TZS {{ total_salon_income }}</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Faida Halisi (Net):</span>
+                <span class="stat-value profit">TZS {{ total_salon_net_profit }}</span>
+            </div>
+            <a href="#" class="btn-action">Angalia Ripoti ya Saluni</a>
+        </div>
+
+        <!-- CARD 3: HOTSPOT -->
+        <div class="card hotspot">
+            <h3> Hotspot Internet</h3>
+            <div class="stat-row">
+                <span class="stat-label">Mauzo ya Vocha:</span>
+                <span class="stat-value">TZS {{ total_hotspot_income }}</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Faida Halisi (Net):</span>
+                <span class="stat-value profit">TZS {{ total_hotspot_net_profit }}</span>
+            </div>
+            <a href="#" class="btn-action">Angalia Ripoti ya Hotspot</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
